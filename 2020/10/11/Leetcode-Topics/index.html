@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Leetcode Topics | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="复制复杂链表 题目：请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。这是去往原题的链接。  方法一：直接deepcopy 复制分为浅拷贝和深拷贝。浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Topics">
+<meta property="og:url" content="http://example.com/2020/10/11/Leetcode-Topics/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="复制复杂链表 题目：请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。这是去往原题的链接。  方法一：直接deepcopy 复制分为浅拷贝和深拷贝。浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-11T00:35:28.000Z">
+<meta property="article:modified_time" content="2020-10-11T00:37:07.134Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="算法 leetcode python 错题记录">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Leetcode-Topics" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/11/Leetcode-Topics/" class="article-date">
+  <time datetime="2020-10-11T00:35:28.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Leetcode Topics
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="复制复杂链表"><a href="#复制复杂链表" class="headerlink" title="复制复杂链表"></a>复制复杂链表</h1><blockquote>
+<p>题目：请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。<br>这是去往<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/">原题</a>的链接。</p>
+</blockquote>
+<h2 id="方法一：直接deepcopy"><a href="#方法一：直接deepcopy" class="headerlink" title="方法一：直接deepcopy"></a>方法一：直接deepcopy</h2><blockquote>
+<p>复制分为浅拷贝和深拷贝。浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。</p>
+</blockquote>
+<p>![] (<a target="_blank" rel="noopener" href="https://pic.leetcode-cn.com/51803415d5440d4589ae6b2e1a157bc6df4aa2f3ac62195cedb5f5ee97055db1-1.png">https://pic.leetcode-cn.com/51803415d5440d4589ae6b2e1a157bc6df4aa2f3ac62195cedb5f5ee97055db1-1.png</a>)<br>明白了以上原理，对于 python 可直接调用相关函数：</p>
+<pre><code>class Solution:
+def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+    return copy.deepcopy(head)</code></pre>
+<h2 id="方法二：广度优先搜索-BFS-深度优先搜索（DFS）"><a href="#方法二：广度优先搜索-BFS-深度优先搜索（DFS）" class="headerlink" title="方法二：广度优先搜索 (BFS)/深度优先搜索（DFS）"></a>方法二：广度优先搜索 (BFS)/深度优先搜索（DFS）</h2><p>（先总结一下自己在做题过程中的困扰：初期学习算法，各种基础不够扎实，很多语句无法直接理解，我会尝试在colab中把大佬的代码跑一下，但是当涉及到调用class类中function时，经常会有问题，原因是题目会定义好一些内部class不可见，解决方法是直接在leetcode平常上跑代码即可。）</p>
+<pre><code>&quot;&quot;&quot; 
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: &#39;Node&#39; = None, random: &#39;Node&#39; = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+&quot;&quot;&quot;
+#这表示这个class node在内部被定义了，我们可以在soluton中直接调用
+class Solution:
+    def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if not head:
+            return None
+        dic = &#123;&#125; #set 作为hash表 用来存放node的value
+        cur = head
+        while cur:
+            dic[cur] = Node(cur.val) 
+            cur = cur.next
+        for cur in dic:
+            if cur.next:
+                dic[cur].next = dic[cur.next]
+            if cur.random:
+                dic[cur].random = dic[cur.random]
+        return dic[head]</code></pre>
+<blockquote>
+<p>BFS 广度优先搜索，是从根结点开始，沿着树的宽度遍历树的节点，其应用主要是应用于走迷宫，从起点开始，找出到终点的最短路径。很多最短路径都基于此计算。这题是deep copy，我们利用hash表的特点，所谓哈希表（Hash table），是根据键（Key）而直接访问在内存存储位置的数据结构。</p>
+</blockquote>
+<p>这里的代码是搬运大佬的，并不是特别理解…<br>只好先来看一下方法三把…</p>
+<h2 id="方法三：手写deepcopy"><a href="#方法三：手写deepcopy" class="headerlink" title="方法三：手写deepcopy"></a>方法三：手写deepcopy</h2><p>先来理解一下解题思路：<br>1.把链表每个节点复制一下（先不复制random），并紧跟被复制节点加入链表</p>
+<p>![] (<a target="_blank" rel="noopener" href="https://pic.leetcode-cn.com/f7a7fd4d8f1605bed8b271839b671dcc3dba236ebb2950e02f671a2146a56d63-2.png">https://pic.leetcode-cn.com/f7a7fd4d8f1605bed8b271839b671dcc3dba236ebb2950e02f671a2146a56d63-2.png</a>)<br>2.给newNode的random赋值，如何赋值呢？可用node.next.random来表示newNode所要指向的random，用node.random.next来表示原来的node指向的random的复制品。令node.next.random = node.random.next</p>
+<p>![] (<a target="_blank" rel="noopener" href="https://pic.leetcode-cn.com/75428beb8dcaf73bebb6690dda0ed2706cf14c59adbea3ed4a849140e72633fd-3.png">https://pic.leetcode-cn.com/75428beb8dcaf73bebb6690dda0ed2706cf14c59adbea3ed4a849140e72633fd-3.png</a>)<br>3.将newNode从链表中分离出来</p>
+<p>![] (<a target="_blank" rel="noopener" href="https://pic.leetcode-cn.com/7d02841dabde1082febe4b1147e430f23dbfc234089a99c0aa9cdc5be6a3124e-4.png">https://pic.leetcode-cn.com/7d02841dabde1082febe4b1147e430f23dbfc234089a99c0aa9cdc5be6a3124e-4.png</a>)</p>
+<p>python 3 代码：</p>
+<pre><code>&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: &#39;Node&#39; = None, random: &#39;Node&#39; = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+&quot;&quot;&quot;
+class Solution:
+    def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if not head: return
+
+        #1.把链表每个节点复制一下（先不复制random），并紧跟被节点加入链表
+        tmpt = head 
+        while tmpt:
+            newnode = Node(tmpt.val,None,None)
+            #把原始node的值赋给newnode
+            newnode.next,tmpt.next = tmpt.next,newnode
+            #上面的语句可以用下面两个代替
+            #newnode.next = tmpt.next
+            #tmpt.next = newnode #把newnode放在临时变量tmpt.next中，把tmpt.next中的值赋给newnode.next
+            tmpt = tmpt.next.next
+
+    #将新的链表中新加入的节点的random赋值，可用node.next.random = node.random.next 
+    tmpt = head
+    while tmpt:
+        if tmpt.random == None:
+            tmpt.next.random == None
+        else:
+            tmpt.next.random = tmpt.random.next
+        tmpt = tmpt.next.next
+
+    #将newNode从链表中分离出来
+    left = head
+    right = head.next
+    start = right
+    while left.next and right.next:
+        left.next = left.next.next
+        right.next = right.next.next
+        left = left.next
+        right = right.next
+
+    return start</code></pre>
+<h1 id="最低票价问题"><a href="#最低票价问题" class="headerlink" title="最低票价问题"></a>最低票价问题</h1><blockquote>
+<p>在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为 days 的数组给出。每一项是一个从 1 到 365 的整数。<br>火车票有三种不同的销售方式：<br>一张为期一天的通行证售价为 costs[0] 美元；<br>一张为期七天的通行证售价为 costs[1] 美元；<br>一张为期三十天的通行证售价为 costs[2] 美元。<br>通行证允许数天无限制的旅行。 例如，如果我们在第 2 天获得一张为期 7 天的通行证，那么我们可以连着旅行 7 天：第 2 天、第 3 天、第 4 天、第 5 天、第 6 天、第 7 天和第 8 天。<br>返回你想要完成在给定的列表 days 中列出的每一天的旅行所需要的最低消费。<br>这是去往<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-cost-for-tickets/">原题</a>的链接。</p>
+</blockquote>
+<p>题目分析：本题考察的是一维dynamic programming，解题思路是新建dp array用来存放每天的票价，通过判断dp[i]中的index i是否与days array中的days[index]相对应，来建立两个array之间的联系。难点在于如果i!=days[index]的话，dp[i]=dp[i-1]。如果=的话，那么就需要从三种方案dp[max(0,i-1)]+costs[0],dp[max(0,i-7)]+costs[1],dp[max(0,i-30)]+costs[2]中选出最小的，从而作为iretation的内部，最后取dp[-1]，则为最后花的最少的票价。</p>
+<p>代码如下：</p>
+<pre><code>class Solution:
+def mincostTickets(self, days: List[int], costs: List[int]) -&gt; int:
+    #对dp array进行初始化,dp array的长度应该是days最后一个元素➕1
+    dp=[0 for _ in range(days[-1]+1)]
+    #新增一个变量days_index,标记应该处理 days 数组中哪一个元素,并初始化为0
+    #这样可以避免多增加一个指针j，指向days[j],从而降低时间复杂度
+    days_index=0
+    for i in range(1,len(dp)):
+        if i!= days[days_index]:
+            #若当前天数不是待处理天数，则其花费费用和前一天相同
+            dp[i]=dp[i-1]
+        else:
+            #若 i 走到了待处理天数，则从三种方式中选一个最小的
+            dp[i]=min(dp[max(0,i-1)]+costs[0],
+                      dp[max(0,i-7)]+costs[1],
+                      dp[max(0,i-30)]+costs[2])
+        days_index += 1             
+        return dp[-1] #返回最后一天对应的费用</code></pre>
+<h1 id="棋盘问题（二维Dynamic-Programming）"><a href="#棋盘问题（二维Dynamic-Programming）" class="headerlink" title="棋盘问题（二维Dynamic Programming）"></a>棋盘问题（二维Dynamic Programming）</h1><blockquote>
+<p>给你一个 m * n 的网格，其中每个单元格不是 0（空）就是 1（障碍物）。每一步，您都可以在空白单元格中上、下、左、右移动。<br>如果您 最多 可以消除 k 个障碍物，请找出从左上角 (0, 0) 到右下角 (m-1, n-1) 的最短路径，并返回通过该路径所需的步数。如果找不到这样的路径，则返回 -1。<br>这是去往<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/">原题</a>的链接。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/11/Leetcode-Topics/" data-id="ckg4dp8rv0000t29kc8eb7g8z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-leetcode-python-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">算法 leetcode python 错题记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-leetcode-python-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">算法 leetcode python 错题记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95-leetcode-python-%E9%94%99%E9%A2%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">算法 leetcode python 错题记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/11/Leetcode-Topics/">Leetcode Topics</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
